@@ -362,16 +362,26 @@ public class MainActivityFragment extends Fragment implements CompoundButton.OnC
             ++correctAnswers; // increment the number of correct answers
 
 
+
             // display correct answer in green text
             answerTextView.setText(answer + "!");
             answerTextView.setTextColor(
                getResources().getColor(R.color.correct_answer,
                   getContext().getTheme()));
 
+            if(t.isChecked())
+            {
+               MediaPlayer correct = MediaPlayer.create(getActivity(), R.raw.goku_correct);
+               correct.start();
+            }
+            else
+
             disableButtons(); // disable all guess Buttons
+
 
             // if the user has correctly identified FLAGS_IN_QUIZ flags
             if (correctAnswers == FLAGS_IN_QUIZ) {
+
 
                // DialogFragment to display quiz stats and start new quiz
                DialogFragment quizResults =
@@ -422,7 +432,8 @@ public class MainActivityFragment extends Fragment implements CompoundButton.OnC
 
 
 
-            if(t.isChecked()) {
+            if(t.isChecked())
+            {
                MediaPlayer incorrect = MediaPlayer.create(getActivity(), R.raw.incorrect_sound);
                incorrect.start();
             }
