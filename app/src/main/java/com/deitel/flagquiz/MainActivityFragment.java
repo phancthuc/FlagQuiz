@@ -79,8 +79,6 @@ public class MainActivityFragment extends Fragment implements CompoundButton.OnC
 
 
    ToggleButton t;
-   private SoundPool soundPool;
-   private HashMap<Integer, Integer> soundPoolMap;
 
    // configures the MainActivityFragment when its View is created
    @Override
@@ -111,7 +109,7 @@ public class MainActivityFragment extends Fragment implements CompoundButton.OnC
 
       // get references to GUI components
 
-      initSounds(getActivity().getApplicationContext());
+
 
 
       quizLinearLayout =
@@ -149,29 +147,6 @@ public class MainActivityFragment extends Fragment implements CompoundButton.OnC
 
    }
 
-      public void initSounds (Context context)
-   {
-
-      soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 100);
-      soundPoolMap = new HashMap(1);
-      soundPoolMap.put(R.raw.incorrect_sound,soundPool.load(context, R.raw.incorrect_sound,1));
-   }
-   public void playSound(int soundID) {
-
-      float volume = 0.2f;
-
-      // play sound with same right and left volume, with a priority of 1,
-      // zero repeats (i.e play once), and a playback rate of 1f
-      soundPool.play(soundPoolMap.get(soundID), volume, volume, 1, 0, 1f);
-   }
-   public void stopSound(int soundID) {
-
-      float volume = 0.0f;
-
-      // play sound with same right and left volume, with a priority of 1,
-      // zero repeats (i.e play once), and a playback rate of 1f
-      soundPool.play(soundPoolMap.get(soundID), volume, volume, 0, 0, 0f);
-   }
 
    // update guessRows based on value in SharedPreferences
    public void updateGuessRows(SharedPreferences sharedPreferences) {
